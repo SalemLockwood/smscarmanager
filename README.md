@@ -32,7 +32,7 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.MD](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.MD](LICENSE.MD) file for details
 
 ## Acknowledgments
 
