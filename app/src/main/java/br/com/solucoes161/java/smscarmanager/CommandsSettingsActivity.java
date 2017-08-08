@@ -14,7 +14,6 @@ public class CommandsSettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commands_settings);
-        callPasswordDialog();
         Commands commands;
         CommandsDao dao = new CommandsDao(getApplicationContext());
         commands = dao.getConfiguration();
@@ -47,31 +46,6 @@ public class CommandsSettingsActivity extends AppCompatActivity {
                     ((EditText) cv).setText(((EditText) cv).getText()+"{phone}");
             }
         });
-    }
-
-    private void callPasswordDialog() {
-        final Dialog password = new Dialog(CommandsSettingsActivity.this);
-        password.setContentView(R.layout.passwordlayout);
-        password.setTitle("Senha");
-        Button btnLogin = (Button) password.findViewById(R.id.btnLogin);
-        Button btnCancel = (Button) password.findViewById(R.id.btnCancel);
-        final EditText edtPassword = (EditText) password.findViewById(R.id.txtPassword);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(edtPassword.getText().toString().equals("18504100")) password.dismiss();
-            }
-        });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                password.dismiss();
-                CommandsSettingsActivity.this.onBackPressed();
-            }
-        });
-        password.setCancelable(false);
-        password.setCanceledOnTouchOutside(false);
-        password.show();
     }
 
     @Override
