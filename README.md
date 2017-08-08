@@ -25,8 +25,8 @@ Please let us know about your [issues here](https://github.com/MelkyFB/smscarman
 
 ## Authors
 
-* ** MelkyFB ** - *Code* - [MelkyFB](https://github.com/MelkyFB)
-* ** WelingtonJunio ** - *Design* - [MelkyFB](https://github.com/WelingtonJunio)
+* **MelkyFB** - *Code* - [MelkyFB](https://github.com/MelkyFB)
+* **WelingtonJunio** - *Design* - [MelkyFB](https://github.com/WelingtonJunio)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
