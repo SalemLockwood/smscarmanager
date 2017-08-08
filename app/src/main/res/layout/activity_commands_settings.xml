@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="br.com.solucoes161.java.smscarmanager.CommandsSettingsActivity"
+    android:background="@drawable/bg">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#32ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Variáveis"
+            android:id="@+id/textView2"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Telefone: {phone}"
+            android:id="@+id/txv_phone"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Senha: {password}"
+            android:id="@+id/txv_password"
+            android:textColor="#ffffffff" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_locate_cmd"
+            android:textColor="#ffffff"
+            android:hint="Localização"
+            android:textColorHint="#bbbbbb" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_cut_oil_cmd"
+            android:textColor="#ffffff"
+            android:hint="Cortar Combustível"
+            android:textColorHint="#bbbbbb" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_sup_oil_cmd"
+            android:textColor="#ffffff"
+            android:hint="Fornecer Combustível"
+            android:textColorHint="#bbbbbb" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_cut_elec_cmd"
+            android:textColor="#ffffff"
+            android:hint="Cortar Eletricidade"
+            android:textColorHint="#bbbbbb" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_sup_elec_cmd"
+            android:textColor="#ffffff"
+            android:hint="Fornecer Eletricidade"
+            android:textColorHint="#bbbbbb" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_sos_key_on_cmd"
+            android:textColor="#ffffff"
+            android:hint="Ativar Alarme de Chave"
+            android:textColorHint="#bbbbbb" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_sos_key_off_cmd"
+            android:textColor="#ffffff"
+            android:hint="Desativar Alarme de Chave"
+            android:textColorHint="#bbbbbb" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_trk_cmd"
+            android:textColor="#ffffff"
+            android:hint="Modo Rastreador"
+            android:textColorHint="#bbbbbb" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_ltn_cmd"
+            android:textColor="#ffffff"
+            android:hint="Modo Escuta"
+            android:textColorHint="#bbbbbb" />
+
+    </LinearLayout>
+
+</RelativeLayout>

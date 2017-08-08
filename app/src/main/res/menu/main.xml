@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/action_phones" android:title="Celulares"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_config" android:title="Configurações"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_commands" android:title="Comandos"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_tracking" android:title="Rastreamentos"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_update" android:title="Atualizar"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>
