@@ -19,6 +19,25 @@ What things you need to install the software and how to install them
 * Software
    * [Android Studio and SDK](https://developer.android.com/studio/index.html?hl=pt-br)
 
+## Screeshots
+
+The following screeshot was taken on GenyMotion running Android 7.1:
+[Command Settings Screen](http://imgur.com/DQ8bjKK)
+[Command Settings Screen](http://imgur.com/QEhDUls)
+[Tracking Time and Phone Number Screen](http://imgur.com/6K7z7Db)
+[Device Number and Password Screen](http://imgur.com/6qIGE7Z)
+[Device Number List](http://imgur.com/rL0Ybx6)
+[Select Device Menu](http://imgur.com/wbRIZMt)
+[Send Command Menu Device Mode](http://imgur.com/Z4oCl5U)
+[Send Command Menu Oil Control](http://imgur.com/KvolvTj)
+
+## Features I want to implement
+
+* Translation
+* Nickname for Device
+* GPRS Compatibility for RealTime Tracking
+
+
 ## Colaborating
 
 Please let us know about your [issues here](https://github.com/MelkyFB/smscarmanager/issues).
