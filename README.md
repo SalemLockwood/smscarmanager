@@ -52,7 +52,7 @@ Please let us know about your [issues here](https://github.com/MelkyFB/smscarman
 ## Authors
 
 * **MelkyFB** - *Code* - [MelkyFB](https://github.com/MelkyFB)
-* **WelingtonJunio** - *Design* - [MelkyFB](https://github.com/WelingtonJunio)
+* **WelingtonJunio** - *Design* - [WelingtonJunio](https://github.com/WelingtonJunio)
 
 See also the list of [contributors](https://github.com/MelkyFB/smscarmanager/graphs/contributors) who participated in this project.
 
