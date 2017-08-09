@@ -18,6 +18,12 @@ What things you need to install the software and how to install them
    * Reasonable PC
 * Software
    * [Android Studio and SDK](https://developer.android.com/studio/index.html?hl=pt-br)
+   
+## To Compile and Work
+
+Change the Google Maps Android API([Get Key Here](https://console.cloud.google.com/apis/api/maps_android_backend/overview?project=never-never-136912&hl=pt-BR)) on both files:
+* For Debug [app/src/release/res/values/google_maps_api.xml](app/src/debug/res/values/google_maps_api.xml)
+* For Release [app/src/release/res/values/google_maps_api.xml](app/src/release/res/values/google_maps_api.xml)
 
 ## Screeshots
 
@@ -32,7 +38,7 @@ The following screeshot was taken on GenyMotion running Android 7.1:
 * [Send Command Menu Device Mode](http://imgur.com/Z4oCl5U)
 * [Send Command Menu Oil Control](http://imgur.com/KvolvTj)
 
-## Features I want to implement
+## Features on arrival
 
 * Translation
 * Nickname for Device
