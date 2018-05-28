@@ -4,8 +4,10 @@ import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
@@ -14,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
@@ -80,7 +83,6 @@ public class MainActivity extends AppCompatActivity
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.CALL_PHONE,
             Manifest.permission.READ_PHONE_STATE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_FINE_LOCATION
     };
     @Override
@@ -173,10 +175,18 @@ public class MainActivity extends AppCompatActivity
         }
         navigationView.setNavigationItemSelectedListener(this);
         txv_phone_number.setText(selectedPhone);
-    }
 
-    protected void initialize() {
-
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Boolean rated = settings.getBoolean("rated", false);
+        int times_opened = settings.getInt("times_opened", 0);
+        if(!rated && times_opened > 9){
+            showRateDialog(MainActivity.this);
+        } else {
+            times_opened++;
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("times_opened", times_opened);
+            editor.commit();
+        }
     }
 
     protected void checkPermissions() {
@@ -690,9 +700,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_update) {
-            checkUpdate();
-        } else if(id == R.id.action_phones){
+        if(id == R.id.action_phones){
             chamaActivityPhonesInsert();
         } else if(id == R.id.action_commands){
             chamaActivityConfigurationCommands();
@@ -1032,5 +1040,38 @@ public class MainActivity extends AppCompatActivity
         btn.setEnabled(true);
         btn.setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(ico),null,null,null);
         btn.setBackgroundDrawable(getResources().getDrawable(bgbtn));
+    }
+    public static void showRateDialog(final Context context) {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(context)
+                .setTitle("Avaliar Aplicação")
+                .setMessage("Parece estar gostando da nossa aplicação.\nPoderia avaliar na loja?")
+                .setPositiveButton("AVALIAR", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (context != null) {
+                            String link = "market://details?id=";
+                            try {
+                                // play market available
+                                context.getPackageManager()
+                                        .getPackageInfo("com.android.vending", 0);
+                                // not available
+                            } catch (PackageManager.NameNotFoundException e) {
+                                e.printStackTrace();
+                                // should use browser
+                                link = "https://play.google.com/store/apps/details?id=";
+                            }
+                            // starts external action
+                            context.startActivity(new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse(link + context.getPackageName())));
+
+                            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+                            SharedPreferences.Editor editor = settings.edit();
+                            editor.putBoolean("rated", true);
+                            editor.commit();
+                        }
+                    }
+                })
+                .setNegativeButton("CANCELAR", null);
+        builder.show();
     }
 }

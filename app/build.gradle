@@ -9,12 +9,12 @@ android {
         applicationId "io.github.salemlockwood.android.smscarmanager"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 45
-        versionName "Build 45"
+        versionCode 51
+        versionName "Build 51"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
