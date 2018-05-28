@@ -87,10 +87,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        checkPermissions();
-    }
 
-    protected void initialize() {
+        checkPermissions();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -177,6 +175,10 @@ public class MainActivity extends AppCompatActivity
         txv_phone_number.setText(selectedPhone);
     }
 
+    protected void initialize() {
+
+    }
+
     protected void checkPermissions() {
         final List<String> missingPermissions = new ArrayList<String>();
         // check all required dynamic permissions
@@ -213,7 +215,6 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
                 // all permissions were granted
-                initialize();
                 break;
         }
     }

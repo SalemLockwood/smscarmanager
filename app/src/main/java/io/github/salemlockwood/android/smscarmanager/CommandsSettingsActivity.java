@@ -2,6 +2,8 @@ package io.github.salemlockwood.android.smscarmanager;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -63,5 +65,40 @@ public class CommandsSettingsActivity extends AppCompatActivity {
         commands.setSOS_KEY_OFF_CMD(((EditText) findViewById(R.id.edt_sos_key_off_cmd)).getText().toString());
         dao.insert(commands);
         super.onBackPressed();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_commands, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        switch(id){
+            case R.id.mit_gt06:
+                updateCommandsWith("GT06");
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void updateCommandsWith(String device) {
+        if(device == "GT06") {
+            ((EditText) findViewById(R.id.edt_locate_cmd)).setText("#locate#");
+            ((EditText) findViewById(R.id.edt_cut_oil_cmd)).setText("#cutoil#{password}#");
+            ((EditText) findViewById(R.id.edt_sup_oil_cmd)).setText("#startoil#{password}#");
+            ((EditText) findViewById(R.id.edt_cut_elec_cmd)).setText("#cutelec#{password}#");
+            ((EditText) findViewById(R.id.edt_sup_elec_cmd)).setText("#startelec#{password}#");
+            ((EditText) findViewById(R.id.edt_trk_cmd)).setText("#track#");
+            ((EditText) findViewById(R.id.edt_ltn_cmd)).setText("#monitor#");
+            ((EditText) findViewById(R.id.edt_sos_key_on_cmd)).setText("#alarmkey#{password}#");
+            ((EditText) findViewById(R.id.edt_sos_key_off_cmd)).setText("#stopalarm#{password}#");
+        }
     }
 }

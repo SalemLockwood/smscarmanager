@@ -9,8 +9,8 @@ android {
         applicationId "io.github.salemlockwood.android.smscarmanager"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 44
-        versionName "Build 44"
+        versionCode 45
+        versionName "Build 45"
     }
     buildTypes {
         release {
