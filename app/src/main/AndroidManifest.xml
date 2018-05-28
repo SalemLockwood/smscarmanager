@@ -31,7 +31,7 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme" >
         <activity
-            android:name=".MainActivity"
+            android:name="io.github.salemlockwood.android.smscarmanager.MainActivity"
             android:label="@string/title_activity_main"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" >
@@ -41,10 +41,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CommandsSettingsActivity" />
+        <activity android:name="io.github.salemlockwood.android.smscarmanager.CommandsSettingsActivity" />
 
         <receiver
-            android:name=".SmsReceiver"
+            android:name="io.github.salemlockwood.android.smscarmanager.SmsReceiver"
             android:enabled="true"
             android:exported="true" >
             <intent-filter android:priority="999" >
@@ -52,17 +52,17 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ConfigActivity" />
+        <activity android:name="io.github.salemlockwood.android.smscarmanager.ConfigActivity" />
         <activity
-            android:name=".PhonesListActivity"
+            android:name="io.github.salemlockwood.android.smscarmanager.PhonesListActivity"
             android:label="@string/title_activity_phones_list"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PhonesInsertActivity"
+            android:name="io.github.salemlockwood.android.smscarmanager.PhonesInsertActivity"
             android:label="@string/title_activity_phones_insert"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".AlertDialogActivity"
+            android:name="io.github.salemlockwood.android.smscarmanager.AlertDialogActivity"
             android:label="Alerta"
             android:theme="@style/AppTheme.NoActionBar" />
         <!--
@@ -78,13 +78,13 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name="io.github.salemlockwood.android.smscarmanager.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity
-            android:name=".MapTrackActivity"
+            android:name="io.github.salemlockwood.android.smscarmanager.MapTrackActivity"
             android:label="@string/title_activity_map_track" >
         </activity>
-        <activity android:name=".TracksActivity" >
+        <activity android:name="io.github.salemlockwood.android.smscarmanager.TracksActivity" >
         </activity>
     </application>
 

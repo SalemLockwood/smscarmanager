@@ -6,11 +6,11 @@ android {
     compileSdkVersion 23
     buildToolsVersion '25.0.0'
     defaultConfig {
-        applicationId "br.com.solucoes161.java.smscarmanager"
+        applicationId "io.github.salemlockwood.android.smscarmanager"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 42
-        versionName "Build 42"
+        versionCode 43
+        versionName "Build 43"
     }
     buildTypes {
         release {
