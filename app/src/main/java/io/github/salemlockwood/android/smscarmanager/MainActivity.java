@@ -1,5 +1,6 @@
 package io.github.salemlockwood.android.smscarmanager;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,6 +14,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.view.SubMenu;
@@ -28,6 +31,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.io.BufferedReader;
@@ -35,6 +39,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
 
@@ -60,13 +66,36 @@ public class MainActivity extends AppCompatActivity
     Handler[] listHandlers;
 
     boolean timerRuning = false;
+
+    private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
+
+    private final static String[] REQUIRED_SDK_PERMISSIONS = new String[]{
+            Manifest.permission.RECEIVE_SMS,
+            Manifest.permission.SEND_SMS,
+            Manifest.permission.READ_SMS,
+            Manifest.permission.INTERNET,
+            Manifest.permission.ACCESS_NETWORK_STATE,
+            Manifest.permission.SYSTEM_ALERT_WINDOW,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.CALL_PHONE,
+            Manifest.permission.READ_PHONE_STATE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        checkPermissions();
+    }
+
+    protected void initialize() {
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        registerReceiver(smsRec,new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
+
+        registerReceiver(smsRec, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -79,16 +108,16 @@ public class MainActivity extends AppCompatActivity
         SubMenu smPhones = m.addSubMenu("Telefones");
 
         listHandlers = new Handler[12];
-        for(int i=0;i<12;i++) listHandlers[i] = new Handler();
+        for (int i = 0; i < 12; i++) listHandlers[i] = new Handler();
         listCounters = new int[12];
-        for(int i=0;i<12;i++) listCounters[i] = 0;
+        for (int i = 0; i < 12; i++) listCounters[i] = 0;
 
         pdao = new PhonesDao(getApplicationContext());
         List<Phones> phones = pdao.selectAll();
-        for(Phones phone : phones){
+        for (Phones phone : phones) {
             smPhones.add(phone.getPhone());
         }
-        MenuItem mi = m.getItem(m.size()-1);
+        MenuItem mi = m.getItem(m.size() - 1);
         mi.setTitle(mi.getTitle());
 
         CommandsDao cdao = new CommandsDao(getApplicationContext());
@@ -128,8 +157,8 @@ public class MainActivity extends AppCompatActivity
         btn_autotrack_on = (Button) findViewById(R.id.btn_autotrack_on);
         btn_autotrack_off = (Button) findViewById(R.id.btn_autotrack_off);
 
-        if(commands !=null){
-            if(cfg != null) {
+        if (commands != null) {
+            if (cfg != null) {
                 if (!phones.isEmpty()) {
                     selectedPhone = phones.get(0).getPhone();
                     sphone = phones.get(0);
@@ -142,11 +171,53 @@ public class MainActivity extends AppCompatActivity
                 chamaActivityConfiguration();
             }
         } else {
-                    chamaActivityConfigurationCommands();
+            chamaActivityConfigurationCommands();
         }
         navigationView.setNavigationItemSelectedListener(this);
         txv_phone_number.setText(selectedPhone);
     }
+
+    protected void checkPermissions() {
+        final List<String> missingPermissions = new ArrayList<String>();
+        // check all required dynamic permissions
+        for (final String permission : REQUIRED_SDK_PERMISSIONS) {
+            final int result = ContextCompat.checkSelfPermission(this, permission);
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                missingPermissions.add(permission);
+            }
+        }
+        if (!missingPermissions.isEmpty()) {
+            // request all missing permissions
+            final String[] permissions = missingPermissions
+                    .toArray(new String[missingPermissions.size()]);
+            ActivityCompat.requestPermissions(this, permissions, REQUEST_CODE_ASK_PERMISSIONS);
+        } else {
+            final int[] grantResults = new int[REQUIRED_SDK_PERMISSIONS.length];
+            Arrays.fill(grantResults, PackageManager.PERMISSION_GRANTED);
+            onRequestPermissionsResult(REQUEST_CODE_ASK_PERMISSIONS, REQUIRED_SDK_PERMISSIONS,
+                    grantResults);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                for (int index = permissions.length - 1; index >= 0; --index) {
+                    if (grantResults[index] != PackageManager.PERMISSION_GRANTED) {
+                        // exit the app if one permission is not granted
+                        Toast.makeText(this, "Permissão necessária '" + permissions[index]
+                                + "' não autorizada, saindo", Toast.LENGTH_LONG).show();
+                        finish();
+                        return;
+                    }
+                }
+                // all permissions were granted
+                initialize();
+                break;
+        }
+    }
+
     @Override
     public void onStop(){
         unregisterReceiver(smsRec);

@@ -3,23 +3,20 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
     }
-    compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "io.github.salemlockwood.android.smscarmanager"
         minSdkVersion 15
-        targetSdkVersion 23
-        versionCode 43
-        versionName "Build 43"
+        targetSdkVersion 27
+        versionCode 44
+        versionName "Build 44"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    dexOptions {
-        incremental false
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -28,8 +25,9 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:design:23.1.1'
-    compile 'com.github.lzyzsd:circleprogress:1.1.0@aar'
-    compile 'com.google.android.gms:play-services:8.4.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:mediarouter-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.github.lzyzsd:circleprogress:1.1.0@aar'
+    implementation 'com.google.android.gms:play-services:8.4.0'
 }
