@@ -19,7 +19,7 @@ What things you need to install the software and how to install them
 * Software
    * [Android Studio and SDK](https://developer.android.com/studio/index.html?hl=pt-br)
    
-## Now Available on Google Pla
+## Now Available on Google Play
 You can Download FREE the app at [Google Play](https://play.google.com/store/apps/details?id=io.github.salemlockwood.android.smscarmanager&rdid=io.github.salemlockwood.android.smscarmanager)
 
 ## Screeshots
