@@ -19,11 +19,8 @@ What things you need to install the software and how to install them
 * Software
    * [Android Studio and SDK](https://developer.android.com/studio/index.html?hl=pt-br)
    
-## To Compile and Work
-
-Change the Google Maps Android API([Get Key Here](https://console.cloud.google.com/apis/api/maps_android_backend/overview?project=never-never-136912&hl=pt-BR)) on both files:
-* For Debug [app/src/release/res/values/google_maps_api.xml](app/src/debug/res/values/google_maps_api.xml)
-* For Release [app/src/release/res/values/google_maps_api.xml](app/src/release/res/values/google_maps_api.xml)
+## Now Available on Google Pla
+You can Download FREE the app at [Google Play](https://play.google.com/store/apps/details?id=io.github.salemlockwood.android.smscarmanager&rdid=io.github.salemlockwood.android.smscarmanager)
 
 ## Screeshots
 
